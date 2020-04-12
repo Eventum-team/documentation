@@ -1,1 +1,177 @@
-.
+architecture {
+	software_system: eventum;   
+	author: gavendanoc_majmartinezva_jmedinan_jnobzaa_icquirogac_diarodriguezmo;  
+
+	architectural_views {
+
+		decomposition_view ::   
+			   
+			elements {   
+				module evento;   
+				module administracion_de_usuario;   
+				module grupos;  
+				module configuracion;  
+				submodule creacion_de_evento;   
+				submodule administrar_evento;   
+				submodule buscar_evento;  
+				submodule visualizar_un_evento;   
+				submodule cancelar_un_evento;  
+				submodule creacion_de_usuario;   
+				submodule asistencia_de_eventos;   
+				submodule grupos_que_sigue_el_usuario;  
+				submodule buscar_grupos;   
+				submodule creacion_grupos;   
+				submodule administradores;  
+				submodule modificar_informacion;   
+				submodule seguir_grupo;  
+				submodule notificaciones;  
+				functionality crear_evento;   
+				functionality modificar_informacion_de_un_evento;   
+				functionality modificacion_de_la_imagen_del_evento;   
+				functionality filtrar_por_tipo;   
+				functionality filtrar_por_nombre;   
+				functionality filtrar_por_grupo;   
+				functionality visualizar_lista_de_proximos_eventos;   
+				functionality visualizar_lista_de_eventos_oficiales;   
+				functionality indicar_que_usuario_sino_asistira;   
+				functionality visualizar_informacion_sobre_un_evento;   
+				functionality visualizar_ubicacion_de_un_evento;   
+				functionality notificar_a_los_suscriptores_cuando_el_evento_este_proximo_a_ocurrir;   
+				functionality cancelar_un_evento;   
+				functionality notificar_a_los_usuarios;   
+				functionality registro_por_google;   
+				functionality visualizar_lista_de_eventos_a_asistir;   
+				functionality visualizar_historial_de_eventos;   
+				functionality visualizar_lista_de_grupos_a_los_que_sigue;  
+				functionality filtrar_por_nombre;   
+				functionality filtrar_por_tipo;   
+				functionality insertar_informacion_del_grupo;   
+				functionality agregar_administrador;   
+				functionality dejar_rol_de_administrador;   
+				functionality editar_informacion_del_grupo;   
+				functionality usuario_se_suscribe_a_un_grupo;   
+				functionality usuario_se_desuscribe_a_un_grupo;   
+				functionality activar_desactivar_notificaiones_en_el_mobil;   
+				functionality activar_desactivar_notificaiones_en_la_web;  
+			}   
+			   
+			relations {   
+				sm:  creacion_de_evento is_part_of m: evento;  
+				sm:  administrar_evento is_part_of m: evento;  
+				sm:  buscar_evento is_part_of m: evento;  
+				sm:  visualizar_un_evento is_part_of m: evento;  
+				sm:  cancelar_un_evento is_part_of m: evento;  
+				sm:  creacion_de_usuario is_part_of m: administracion_de_usuario;  
+				sm:  asistencia_de_eventos is_part_of m: administracion_de_usuario;  
+				sm:  grupos_que_sigue_el_usuario is_part_of m: administracion_de_usuario;  
+				sm:  buscar_grupos is_part_of m: grupos;  
+				sm:  creacion_grupos is_part_of m: grupos;  
+				sm:  administradores is_part_of m: grupos;  
+				sm:  modificar_informacion is_part_of m: grupos;  
+				sm:  seguir_grupo is_part_of m: grupos;  
+				sm:  notificaciones is_part_of m: configuracion;  
+				  
+				f:  crear_evento is_part_of sm:  creacion_de_evento;  
+				f:  modificar_informacion_de_un_evento is_part_of sm:  administrar_evento;  
+				f:  modificacion_de_la_imagen_del_evento is_part_of sm:  administrar_evento;  
+				f:  filtrar_por_tipo is_part_of sm:  buscar_evento;  
+				f:  filtrar_por_nombre is_part_of sm:  buscar_evento;  
+				f:  filtrar_por_grupo is_part_of sm:  buscar_evento;  
+				f:  visualizar_lista_de_proximos_eventos is_part_of sm:  buscar_evento;  
+				f:  visualizar_lista_de_eventos_oficiales is_part_of sm:  buscar_evento;  
+				f:  indicar_que_usuario_sino_asistira is_part_of sm:  visualizar_un_evento;  
+				f:  visualizar_informacion_sobre_un_evento is_part_of sm:  visualizar_un_evento;  
+				f:  visualizar_ubicacion_de_un_evento is_part_of sm:  visualizar_un_evento;  
+				f:  notificar_a_los_suscriptores_cuando_el_evento_este_proximo_a_ocurrir is_part_of sm:  visualizar_un_evento;  
+				f:  cancelar_un_evento is_part_of sm:  cancelar_un_evento;  
+				f:  notificar_a_los_usuarios is_part_of sm:  cancelar_un_evento;  
+				f:  registro_por_google is_part_of sm:  creacion_de_usuario;  
+				f:  visualizar_lista_de_eventos_a_asistir is_part_of sm:  asistencia_de_eventos;  
+				f:  visualizar_historial_de_eventos is_part_of sm:  asistencia_de_eventos;  
+				f:  visualizar_lista_de_grupos_a_los_que_sigue is_part_of sm:  grupos_que_sigue_el_usuario;  
+				f:  filtrar_por_nombre is_part_of sm:  buscar_grupos;  
+				f:  filtrar_por_tipo is_part_of sm:  buscar_grupos;  
+				f:  insertar_informacion_del_grupo is_part_of sm:  creacion_grupos;  
+				f:  agregar_administrador is_part_of sm:  administradores;  
+				f:  dejar_rol_de_administrador is_part_of sm:  administradores;  
+				f:  editar_informacion_del_grupo is_part_of sm:  modificar_informacion;  
+				f:  usuario_se_suscribe_a_un_grupo is_part_of sm:  seguir_grupo;  
+				f:  usuario_se_desuscribe_a_un_grupo is_part_of sm:  seguir_grupo;  
+				f:  activar_desactivar_notificaiones_en_el_mobil is_part_of sm:  notificaciones;  
+				f:  activar_desactivar_notificaiones_en_la_web is_part_of sm:  notificaciones;  
+			}   
+		::	  
+
+		data_model_view ::
+
+			relational data_model ev_groups_data_model {
+				elements {
+					data_entity Groups {
+						attributes {
+							int id_group;
+							int id_type;
+							string name;
+							string description;
+							date created_date;
+							string contact_number;
+							string status;
+						}
+					}
+					
+					data_entity GroupTypes {
+						attributes {
+							int id_type;
+							string name;
+						}
+					}
+				}
+
+				relations {
+					one_to_many (Groups, GroupTypes);
+				}
+			}
+			
+			relational data_model ev_events_data_model {
+				elements {
+					data_entity Events {
+						attributes {
+							int id;
+							string ownerId;
+							string ownerType;
+							string name;
+							string status;
+							date eventStartDate;
+							date eventFinishDate;
+							string description;
+							string url;
+							string latitude;
+							string longitude;
+						}
+					}
+				}
+			}
+			
+		::
+
+		component_and_connector_view ::
+			elements {
+				component_types {
+					microservice;
+					database;
+				}
+				component microservice ev_groups_ms;
+				component microservice ev_events_ms;
+				component database ev_groups_db (data_model ev_groups_data_model);
+				component database ev_events_db (data_model ev_events_data_model);
+				connector sql_alchemy;
+				connector gorm;
+			}
+
+			relations {
+				attachment (sql_alchemy: ev_groups_ms, ev_groups_db);
+				attachment (gorm: ev_events_ms, ev_events_db);
+			}
+		::
+	}
+}
+
