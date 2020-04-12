@@ -151,6 +151,47 @@ architecture {
 				}
 			}
 			
+			relational data_model ev_users_data_model {
+				    elements {
+						data_entity Users {
+						    attributes {
+							int id;
+							string name;
+							string phone_number;
+							int age;
+					 		string career;
+							string status;
+							date created_at;
+							date updated_at;
+						    }
+						}
+					 data_entity User_groups {
+						    attributes {
+							int user_id;
+							int group_id;
+							string status;
+							date created_at;
+							date updated_at;
+						    }
+						}
+					     data_entity User_events {
+						    attributes {
+							int user_id;
+							int event_id;
+							bool assistance;
+						 bool interested;
+							date created_at;
+							date updated_at;
+						    }
+						}
+					    }
+					    relations {
+						one_to_many (Users, User_groups);
+						one_to_many (Users, User_events);
+					    }
+				}
+
+			
 		::
 
 		component_and_connector_view ::
